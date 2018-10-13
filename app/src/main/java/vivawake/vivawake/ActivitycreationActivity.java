@@ -1,5 +1,7 @@
 package vivawake.vivawake;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.app.TimePickerDialog;
@@ -8,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class ActivitycreationActivity extends AppCompatActivity {
@@ -33,16 +36,29 @@ public class ActivitycreationActivity extends AppCompatActivity {
                 int minute = Integer.parseInt(minutes.getText().toString());
                 String activityName = name.getText().toString();
                 activity activity = new activity(activityName, hour, minute);
-                mLayout.addView(createNewButton(activity));
+                saveActivity(view, activity);
             }
         });
     }
 
-    protected Button createNewButton(activity activity){
-        final LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        final Button button = new Button(this);
-        button.setLayoutParams(lparams);
-        button.setText(activity.getHour() + " : " + activity.getMinutes() + " " + activity.getName());
-        return button;
+    /*public void activityCounter(View view){
+        SharedPreferences activityCount = getSharedPreferences("ActivityCounter", Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = activityCount.edit();
+
+
+    }*/
+
+    public void saveActivity(View view, activity activity){
+        SharedPreferences sharedAct = getSharedPreferences(activity.getName(), Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = sharedAct.edit();
+        editor.putInt("Hour", activity.getHour());
+        editor.putInt("Minute", activity.getMinutes());
+        editor.putString("Name", activity.getName());
+
+        Toast.makeText(this, "Saved!", Toast.LENGTH_LONG).show();
     }
+
+
 }
