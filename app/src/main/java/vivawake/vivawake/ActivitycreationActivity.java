@@ -60,7 +60,7 @@ public class ActivitycreationActivity extends AppCompatActivity {
         editor.putInt("Minute", activity.getMinutes());
         editor.putString("Name", activity.getName());
 
-        Toast.makeText(this, "Saved!", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Saved!" + sharedAct.getString("Name", ""), Toast.LENGTH_LONG).show();
     }
 
 
