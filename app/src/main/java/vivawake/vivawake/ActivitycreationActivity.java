@@ -2,18 +2,20 @@ package vivawake.vivawake;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.app.TimePickerDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 public class ActivitycreationActivity extends AppCompatActivity {
+
+    public static ArrayList<String> alarmNames = new ArrayList<>();
     EditText hours;
     EditText minutes;
     EditText name;
@@ -28,6 +30,7 @@ public class ActivitycreationActivity extends AppCompatActivity {
         name = (EditText) findViewById(R.id.ActivityNameTxt);
         Button save = (Button) findViewById(R.id.saveButton);
         mLayout = (LinearLayout) findViewById(R.id.linearL);
+        alarmNames.add(name.getText().toString());
 
         save.setOnClickListener(new View.OnClickListener(){
             @Override
