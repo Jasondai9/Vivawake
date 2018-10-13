@@ -97,7 +97,13 @@ public class SetupActivity extends AppCompatActivity {
         editor.putString("ringtone", ringtoneFileName);
         editor.apply();
 
-        //Toast.makeText(getApplicationContext(),"Alarm saved", Toast.LENGTH_SHORT).show();
+        String ampm;
+        if(hour/12 == 1)
+            ampm = "PM";
+        else
+            ampm = "AM";
+
+        Toast.makeText(getApplicationContext(),"Alarm will sound at " + hour%12 + ":" + minute + ampm, Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -114,7 +120,6 @@ public class SetupActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedCounter.edit();
         editor.putInt("counter", numOfAlarms);
         editor.apply();
-        Toast.makeText(getApplicationContext(),"There is/are now " + numOfAlarms + " alarms", Toast.LENGTH_SHORT).show();
     }
 
     private void setupActionBar() {
