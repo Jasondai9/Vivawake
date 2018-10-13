@@ -27,12 +27,10 @@ public class SetupActivity extends AppCompatActivity {
     ArrayAdapter<CharSequence> ringtoneAdapter;
     String alarmName, ringtone;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup);
-        setupActionBar();
 
 
         final Calendar calendar = Calendar.getInstance();
@@ -69,9 +67,10 @@ public class SetupActivity extends AppCompatActivity {
                 subtract the activity time from this
                  */
                 long alarmTime = calendar.getTimeInMillis();
-
                 alarmManager1.set(AlarmManager.RTC_WAKEUP, alarmTime, pendingIntent);
                 saveAlarm(v, hour, minute, alarmName, ringtone);
+
+                finish();
             }
         });
         this.context = this;
