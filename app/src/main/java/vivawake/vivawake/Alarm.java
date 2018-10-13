@@ -4,14 +4,14 @@ import java.time.OffsetTime;
 import java.util.Calendar;
 
 public class Alarm {
-    Calendar timeOfAlarm;
-    //Ringtone declaration
+    String alarmName, ringtone;
+    int hour, minute, alarmID;
 
-    OffsetTime timeOfArrival;   //user input
-
-    //location maybe?
-
-    Alarm(Calendar timeOfArrival){
-
-    };
+    Alarm(String alarmName, String ringtone, int hour, int minute, int alarmID){
+        this.alarmName = alarmName;
+        this.ringtone = ringtone;
+        this.hour = hour;
+        this.minute = minute;
+        this.alarmID = alarmID;
+    }
 }

@@ -90,6 +90,7 @@ public class SetupActivity extends AppCompatActivity {
         SharedPreferences sharedAlarm = getSharedPreferences(alarmID, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedAlarm.edit();
 
+        editor.putInt("alarmID", alarmCounter);
         editor.putString("alarmName", alarmName);
         editor.putInt("hour", hour);
         editor.putInt("minute", minute);
