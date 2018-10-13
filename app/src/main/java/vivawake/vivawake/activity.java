@@ -5,6 +5,10 @@ public class activity {
     private int minutes;
     private String name;
 
+    activity(){
+
+    }
+
     activity(String name, int hour, int minute){
         this.hours = hour;
         this.name = name;

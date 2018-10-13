@@ -31,6 +31,7 @@ public class ActivitycreationActivity extends AppCompatActivity {
         Button save = (Button) findViewById(R.id.saveButton);
         mLayout = (LinearLayout) findViewById(R.id.linearL);
         alarmNames.add(name.getText().toString());
+        Button test = (Button) findViewById(R.id.button3);
 
         save.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -41,6 +42,15 @@ public class ActivitycreationActivity extends AppCompatActivity {
                 activity activity = new activity(activityName, hour, minute);
                 saveActivity(view, activity);
             }
+        });
+
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                displayActivity(view);
+
+            }
+
         });
     }
 
@@ -53,7 +63,7 @@ public class ActivitycreationActivity extends AppCompatActivity {
     }*/
 
     public void saveActivity(View view, activity act){
-        SharedPreferences sharedAct = getSharedPreferences(act.getName(), Context.MODE_PRIVATE);
+        SharedPreferences sharedAct = getSharedPreferences("tester", Context.MODE_PRIVATE);
 
         SharedPreferences.Editor editor = sharedAct.edit();
         editor.putInt("Hour", act.getHour());
@@ -62,6 +72,11 @@ public class ActivitycreationActivity extends AppCompatActivity {
 
 
         Toast.makeText(this, "Saved!" + sharedAct.getString("Name", ""), Toast.LENGTH_LONG).show();
+    }
+
+    public void displayActivity(View view){
+        SharedPreferences sharedAct = getSharedPreferences("tester", Context.MODE_PRIVATE);
+        Toast.makeText(this, sharedAct.getString("Name", ""), Toast.LENGTH_LONG).show();
     }
 
 
