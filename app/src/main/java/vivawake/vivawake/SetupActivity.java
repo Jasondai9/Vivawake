@@ -1,7 +1,9 @@
 package vivawake.vivawake;
 
 import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -20,8 +22,6 @@ import java.util.Calendar;
 public class SetupActivity extends AppCompatActivity {
 
     TimePicker timePicker1;
-    AlarmManager alarmManager1;
-    Calendar calendar;
     Context context;
     Spinner ringtoneSpinner;
     ArrayAdapter<CharSequence> ringtoneAdapter;
@@ -34,65 +34,62 @@ public class SetupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setup);
         setupActionBar();
 
-        calendar = Calendar.getInstance();
-        alarmManager1 = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+        final Calendar calendar = Calendar.getInstance();
+
         timePicker1 = (TimePicker) findViewById(R.id.timePicker1);
         ringtoneSpinner = (Spinner) findViewById(R.id.ringtoneSpinner);
         ringtoneAdapter = ArrayAdapter.createFromResource(this, R.array.ringtoneArray,  android.R.layout.simple_spinner_item);
         ringtoneAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ringtoneSpinner.setAdapter(ringtoneAdapter);
-        ringtoneSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-
-
-
-        //temp alarm
-        Button tempAlarmButton = (Button) findViewById(R.id.tempAlarmButton);
-        tempAlarmButton.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Playing alarm...", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         //button that saves the alarm
         Button saveAlarmButton = (Button) findViewById(R.id.saveAlarmButton);
         saveAlarmButton.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View v) {
+                Intent alarmReceiverIntent = new Intent(SetupActivity.this, AlarmReceiver.class);
+
+                AlarmManager alarmManager1 = (AlarmManager) getSystemService(ALARM_SERVICE);
+
                 int hour = timePicker1.getHour();
                 int minute = timePicker1.getMinute();
-                //converts edit text to string
                 EditText alarmNameEditText = (EditText) findViewById(R.id.alarmNameEditText);
                 alarmName = alarmNameEditText.getText().toString();
                 ringtone = ringtoneSpinner.getSelectedItem().toString();
 
-
                 calendar.set(Calendar.HOUR_OF_DAY, hour);
                 calendar.set(Calendar.MINUTE, minute);
 
-                saveAlarm(v, hour, minute, alarmName, ringtone);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, alarmReceiverIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
+
+                /*
+                subtract the activity time from this
+                 */
+                long alarmTime = calendar.getTimeInMillis();
+
+                alarmManager1.set(AlarmManager.RTC_WAKEUP, alarmTime, pendingIntent);
+                saveAlarm(v, hour, minute, alarmName, ringtone);
             }
         });
         this.context = this;
     }
 
     public void saveAlarm(View view, int hour, int minute, String alarmName, String ringtoneFileName){
-        SharedPreferences sharedPref = getSharedPreferences(alarmName, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
+        int alarmCounter = getAlarmCounter(view);
+        if(alarmCounter == -1) {    //then its the first alarm
+            alarmCounter = 0;
+        }
+
+        alarmCounter++;
+        setAlarmCounter(view, alarmCounter);
+
+        String alarmID = "alarm" + alarmCounter;
+
+        SharedPreferences sharedAlarm = getSharedPreferences(alarmID, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedAlarm.edit();
 
         editor.putString("alarmName", alarmName);
         editor.putInt("hour", hour);
@@ -100,7 +97,24 @@ public class SetupActivity extends AppCompatActivity {
         editor.putString("ringtone", ringtoneFileName);
         editor.apply();
 
-        Toast.makeText(getApplicationContext(),"Alarm saved", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"Alarm saved", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * @param view
+     * @return the number of alarms
+     */
+    public int getAlarmCounter(View view){
+        SharedPreferences sharedCounter = getSharedPreferences("alarmCounter", Context.MODE_PRIVATE);
+        return sharedCounter.getInt("counter", -1);
+    }
+
+    public void setAlarmCounter(View view, int numOfAlarms){
+        SharedPreferences sharedCounter = getSharedPreferences("alarmCounter", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedCounter.edit();
+        editor.putInt("counter", numOfAlarms);
+        editor.apply();
+        Toast.makeText(getApplicationContext(),"There is/are now " + numOfAlarms + " alarms", Toast.LENGTH_SHORT).show();
     }
 
     private void setupActionBar() {

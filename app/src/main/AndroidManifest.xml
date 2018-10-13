@@ -30,6 +30,11 @@
         <activity
             android:name=".SetupActivity"
             android:label="@string/title_activity_settings" />
+        
+        <receiver android:name=".AlarmReceiver" />
+        <service android:name=".RingtonePlayerService"
+            android:enabled="true">
+        </service>
 
     </application>
 

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.provider.MediaStore;
+import android.widget.Toast;
 
 public class RingtonePlayerService extends Service {
     MediaPlayer ringtonePlayer;
@@ -16,9 +17,13 @@ public class RingtonePlayerService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        
-        //ringtonePlayer = MediaPlayer.create(this, R.);
+        ringtonePlayer = MediaPlayer.create(this, R.raw.ringtone1);
         ringtonePlayer.start();
+
         return START_NOT_STICKY;
+    }
+
+    public void onDestroy(){
+        Toast.makeText(this, "onDestroy in RingtonePlayerService called", Toast.LENGTH_SHORT).show();
     }
 }
