@@ -49,13 +49,14 @@ public class ActivitycreationActivity extends AppCompatActivity {
 
     }*/
 
-    public void saveActivity(View view, activity activity){
-        SharedPreferences sharedAct = getSharedPreferences(activity.getName(), Context.MODE_PRIVATE);
+    public void saveActivity(View view, activity act){
+        SharedPreferences sharedAct = getSharedPreferences(act.getName(), Context.MODE_PRIVATE);
 
         SharedPreferences.Editor editor = sharedAct.edit();
-        editor.putInt("Hour", activity.getHour());
-        editor.putInt("Minute", activity.getMinutes());
-        editor.putString("Name", activity.getName());
+        editor.putInt("Hour", act.getHour());
+        editor.putInt("Minute", act.getMinutes());
+        editor.putString("Name", act.getName());
+
 
         Toast.makeText(this, "Saved!" + sharedAct.getString("Name", ""), Toast.LENGTH_LONG).show();
     }
