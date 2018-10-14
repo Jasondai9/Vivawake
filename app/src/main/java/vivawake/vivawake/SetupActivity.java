@@ -48,7 +48,7 @@ public class SetupActivity extends AppCompatActivity {
         activitiesButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SetupActivity.this, ChecklistActivity.class));
+                startActivity(new Intent(SetupActivity.this, ActivityActivity.class));
             }
          });
 

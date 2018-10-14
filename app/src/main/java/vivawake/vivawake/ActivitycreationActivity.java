@@ -45,7 +45,7 @@ public class ActivitycreationActivity extends AppCompatActivity {
                 if(hour > 23){
                     hour = 23;
                 }
-                //Toast.makeText(ActivitycreationActivity.this, Integer.toString(hour), Toast.LENGTH_LONG).show();
+
                 int minute = Integer.parseInt(minutes.getText().toString());
                 if(minute > 59){
                     minute = 59;
