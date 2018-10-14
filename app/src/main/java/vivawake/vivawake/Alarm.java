@@ -1,6 +1,7 @@
 package vivawake.vivawake;
 
 import java.time.OffsetTime;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import android.app.AlarmManager;
@@ -17,6 +18,7 @@ public class Alarm {
     AlarmManager alarmManager;
     final Calendar calendar = Calendar.getInstance();
     PendingIntent pendingIntent;
+    ArrayList<Long> activityTimes = new ArrayList<Long>();
 
     final static public long MS_IN_MIN = 60000;
     final static public long MS_IN_HOUR = 3600000;
@@ -44,7 +46,7 @@ public class Alarm {
         alarmTime -= alarmTime%MS_IN_MIN;
         alarmManager.set(AlarmManager.RTC_WAKEUP, alarmTime, pendingIntent);
     }
-    
+
     public void cancel(Context context){
         pendingIntent.cancel();
     }

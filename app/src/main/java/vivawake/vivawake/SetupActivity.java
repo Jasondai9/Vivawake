@@ -24,7 +24,6 @@ import java.util.Calendar;
 public class SetupActivity extends AppCompatActivity {
 
     TimePicker timePicker1;
-    Context context;
     Spinner ringtoneSpinner;
     ArrayAdapter<CharSequence> ringtoneAdapter;
     String alarmName, ringtone, alarmID;
@@ -48,7 +47,7 @@ public class SetupActivity extends AppCompatActivity {
         activitiesButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SetupActivity.this, ActivityActivity.class));
+                startActivity(new Intent(SetupActivity.this, ChecklistActivity.class));
             }
          });
 
@@ -57,9 +56,6 @@ public class SetupActivity extends AppCompatActivity {
         saveAlarmButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //Intent alarmReceiverIntent = new Intent(SetupActivity.this, AlarmReceiver.class);
-
-                //AlarmManager alarmManager1 = (AlarmManager) getSystemService(ALARM_SERVICE);
 
                 //Gets the input time
                 int hour = timePicker1.getHour();
@@ -71,19 +67,16 @@ public class SetupActivity extends AppCompatActivity {
                 ringtone = ringtoneSpinner.getSelectedItem().toString();
                 alarmID = saveAlarm(v, hour, minute, alarmName, ringtone);
 
-                //calendar.set(Calendar.HOUR_OF_DAY, hour);
-               // calendar.set(Calendar.MINUTE, minute);
-
                 Alarm alarm = new Alarm(alarmName, ringtone, hour, minute, alarmID);
                 MainActivity.alarmArrayList.add(alarm);
 
-                alarm.turnMeOn(context);
+                alarm.turnMeOn(SetupActivity.this);
 
                 Intent backIntent = new Intent(SetupActivity.this, ActivityActivity.class);
                 startActivity(backIntent);
             }
         });
-        this.context = this;
+
     }
 
 
