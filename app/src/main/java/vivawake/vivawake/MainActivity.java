@@ -22,7 +22,7 @@ import static android.widget.Toast.*;
 public class MainActivity extends AppCompatActivity {
 
     static ArrayList<Alarm> alarmArrayList;
-
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        this.context = context;
     }
 
     public void createAlarmArrayList(){

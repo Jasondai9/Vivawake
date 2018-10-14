@@ -7,6 +7,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 
 
@@ -15,6 +16,9 @@ public class Alarm {
     int hour, minute;
     AlarmManager alarmManager;
     final Calendar calendar = Calendar.getInstance();
+
+    final static public long MS_IN_MIN = 60000;
+    final static public long MS_IN_HOUR = 3600000;
 
 
     Alarm(String alarmName, String ringtone, int hour, int minute, String alarmID){
@@ -30,12 +34,33 @@ public class Alarm {
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
 
-        long alarmTime = calendar.getTimeInMillis();
+
+        SharedPreferences alarmShare = context.getSharedPreferences(alarmID, Context.MODE_PRIVATE);
+        calendar.set(Calendar.HOUR_OF_DAY, alarmShare.getInt("hour", 0));
+        calendar.set(Calendar.MINUTE, alarmShare.getInt("minute", 0));
+
+        long alarmTime = calculateAlarmTime(calendar.getTimeInMillis(), context);
+        alarmTime -= alarmTime%MS_IN_MIN;
         alarmManager.set(AlarmManager.RTC_WAKEUP, alarmTime, pendingIntent);
     }
 
     public void turnMeOff(Context context){
         Intent intent = new Intent(context, RingtonePlayerService.class);
         context.startService(intent);
+    }
+
+    private long getTotalActivityTime(Context context){
+        long totalActivityTime = 0;
+        SharedPreferences activityCounter = context.getSharedPreferences("activityCounter", Context.MODE_PRIVATE);
+        for(int i = 1; i <=activityCounter.getInt("counter", 0); i++) {
+            SharedPreferences sharedPreferences = context.getSharedPreferences("Activity"+i, Context.MODE_PRIVATE);
+            totalActivityTime += sharedPreferences.getInt("Minute", 0) * MS_IN_MIN;
+            totalActivityTime += sharedPreferences.getInt("Hour", 0) * MS_IN_HOUR;
+        }
+        return totalActivityTime;
+    }
+
+    public long calculateAlarmTime(long arrivalTime, Context context){
+        return arrivalTime - getTotalActivityTime(context);
     }
 }

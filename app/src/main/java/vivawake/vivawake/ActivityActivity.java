@@ -21,6 +21,8 @@ public class ActivityActivity extends AppCompatActivity {
     private ArrayList<String> activityNames;
     private ArrayList<String> hourTimes;
     private ArrayList<String> minuteTimes;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +61,9 @@ public class ActivityActivity extends AppCompatActivity {
         }
         initRecyclerView();
     }
+
+
+
     public void openActivityCreation(){
        startActivity(new Intent(this, ActivitycreationActivity.class));
     }
