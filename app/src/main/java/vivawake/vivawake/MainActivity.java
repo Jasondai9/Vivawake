@@ -20,7 +20,7 @@ import static android.widget.Toast.*;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Alarm> alarmArrayList;
+    static ArrayList<Alarm> alarmArrayList;
 
 
     @Override
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
     }
 
     public void createAlarmArrayList(){
@@ -48,8 +49,7 @@ public class MainActivity extends AppCompatActivity {
         int numAlarms = alarmCounter.getInt("counter", 0);
 
         alarmArrayList = new ArrayList<Alarm>(numAlarms+1);
-        
-        Toast.makeText(getApplicationContext(), "arraylist completed", Toast.LENGTH_SHORT).show();
+
         if(numAlarms == 0)
             return;
 
@@ -58,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
         for(int i = 1; i <= numAlarms; i++) {
             String alarmID = "alarm" + i;
             sharedAlarms = getSharedPreferences(alarmID, Context.MODE_PRIVATE);
-            alarmArrayList.add(new Alarm(sharedAlarms.getString("alarmName", ""),
-                    sharedAlarms.getInt("hour", 0), sharedAlarms.getInt("minute", 0)));
+            alarmArrayList.add(new Alarm(sharedAlarms.getString("alarmName", ""),sharedAlarms.getString("ringtone", ""),
+                    sharedAlarms.getInt("hour", 0), sharedAlarms.getInt("minute", 0), sharedAlarms.getString("alarmID", "")));
         }
 
     }

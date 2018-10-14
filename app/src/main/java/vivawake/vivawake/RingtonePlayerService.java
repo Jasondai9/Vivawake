@@ -17,7 +17,7 @@ public class RingtonePlayerService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        if(ringtonePlayer ==null){
+        if(ringtonePlayer == null){
             ringtonePlayer = MediaPlayer.create(this, R.raw.ringtone1);
             ringtonePlayer.start();
         }else {

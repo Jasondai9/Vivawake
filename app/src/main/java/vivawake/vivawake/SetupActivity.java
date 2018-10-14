@@ -51,19 +51,23 @@ public class SetupActivity extends AppCompatActivity {
 
                 //AlarmManager alarmManager1 = (AlarmManager) getSystemService(ALARM_SERVICE);
 
+                //Gets the input time
                 int hour = timePicker1.getHour();
                 int minute = timePicker1.getMinute();
+                //Stores input text
                 EditText alarmNameEditText = (EditText) findViewById(R.id.alarmNameEditText);
                 alarmName = alarmNameEditText.getText().toString();
+                //Selects ringtone
                 ringtone = ringtoneSpinner.getSelectedItem().toString();
                 alarmID = saveAlarm(v, hour, minute, alarmName, ringtone);
 
-                calendar.set(Calendar.HOUR_OF_DAY, hour);
-                calendar.set(Calendar.MINUTE, minute);
+                //calendar.set(Calendar.HOUR_OF_DAY, hour);
+               // calendar.set(Calendar.MINUTE, minute);
 
                 Alarm alarm = new Alarm(alarmName, ringtone, hour, minute, alarmID);
+                MainActivity.alarmArrayList.add(alarm);
 
-                alarm.turnMeOn(v, context);
+                alarm.turnMeOn(context);
                 /*
 
 

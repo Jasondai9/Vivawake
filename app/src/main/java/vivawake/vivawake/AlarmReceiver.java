@@ -14,7 +14,8 @@ public class AlarmReceiver extends BroadcastReceiver {
         Intent ringtoneServiceIntent = new Intent(context, RingtonePlayerService.class);
         context.startService(ringtoneServiceIntent);
         Vibrator vibe = (Vibrator) context.getSystemService(context.VIBRATOR_SERVICE);
-        vibe.vibrate(2000);                                                     //vibration duration in ms
+        vibe.vibrate(2000);
+
     }
 }
 

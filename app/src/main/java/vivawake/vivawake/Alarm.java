@@ -17,12 +17,6 @@ public class Alarm {
     final Calendar calendar = Calendar.getInstance();
 
 
-    Alarm(String alarmName, int hour, int minute){
-        this.alarmName = alarmName;
-        this.hour = hour;
-        this.minute = minute;
-    }
-
     Alarm(String alarmName, String ringtone, int hour, int minute, String alarmID){
         this.alarmName = alarmName;
         this.ringtone = ringtone;
@@ -31,7 +25,7 @@ public class Alarm {
         this.alarmID = alarmID;
     }
 
-    public void turnMeOn(View view, Context context){
+    public void turnMeOn(Context context){
         Intent intent = new Intent(context, AlarmReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
@@ -40,8 +34,8 @@ public class Alarm {
         alarmManager.set(AlarmManager.RTC_WAKEUP, alarmTime, pendingIntent);
     }
 
-    public void turnMeOff(View view, Context context){
-        Intent intent = new Intent(context, AlarmReceiver.class);
-
+    public void turnMeOff(Context context){
+        Intent intent = new Intent(context, RingtonePlayerService.class);
+        context.startService(intent);
     }
 }
