@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/activity_checklist_layout">
+    android:id="@+id/chactivity_layout">
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=":"
-        android:id="@+id/colon"
+        android:id="@+id/chcolon"
         android:textColor="#000"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/hour_text"
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Canada"
-        android:id="@+id/activity_name"
+        android:id="@+id/chactivity_name"
         android:textColor="#000"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@id/checkbox"
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="5"
-        android:id="@+id/hour_text"
+        android:id="@+id/chhour_text"
         android:textColor="#000"
         android:layout_centerVertical="true"
         android:layout_marginLeft="275dp"
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="30"
-        android:id="@+id/minutes_text"
+        android:id="@+id/chminutes_text"
         android:textColor="#000"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@id/colon"

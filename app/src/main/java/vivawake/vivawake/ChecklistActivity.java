@@ -36,15 +36,14 @@ public class ChecklistActivity extends AppCompatActivity {
 
         initActivities();
 
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openActivityCreation();
             }
         });
-
+*/
 
     }
 
@@ -69,9 +68,8 @@ public class ChecklistActivity extends AppCompatActivity {
     }
 
     public void initRecyclerView(){
-        Log.d(TAG, "initRecyclerView: int recyclerview");
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        RecyclerViewAdapter_Activity adapter = new RecyclerViewAdapter_Activity(this, activityNames, hourTimes, minuteTimes);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view_checklist);
+        RecyclerViewAdapterChecklist adapter = new RecyclerViewAdapterChecklist(ChecklistActivity.this, activityNames, hourTimes, minuteTimes);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(ChecklistActivity.this));
     }
