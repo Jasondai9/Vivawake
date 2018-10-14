@@ -25,7 +25,7 @@ public class SetupActivity extends AppCompatActivity {
     Context context;
     Spinner ringtoneSpinner;
     ArrayAdapter<CharSequence> ringtoneAdapter;
-    String alarmName, ringtone;
+    String alarmName, ringtone, alarmID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +67,9 @@ public class SetupActivity extends AppCompatActivity {
                 subtract the activity time from this
                  */
                 long alarmTime = calendar.getTimeInMillis();
+                alarmID = saveAlarm(v, hour, minute, alarmName, ringtone);
                 alarmManager1.set(AlarmManager.RTC_WAKEUP, alarmTime, pendingIntent);
-                saveAlarm(v, hour, minute, alarmName, ringtone);
+
 
                 finish();
             }
@@ -76,7 +77,9 @@ public class SetupActivity extends AppCompatActivity {
         this.context = this;
     }
 
-    public void saveAlarm(View view, int hour, int minute, String alarmName, String ringtoneFileName){
+
+    //returns alarmID
+    public String saveAlarm(View view, int hour, int minute, String alarmName, String ringtoneFileName){
         int alarmCounter = getAlarmCounter(view);
         if(alarmCounter == -1) {    //then its the first alarm
             alarmCounter = 0;
@@ -85,12 +88,12 @@ public class SetupActivity extends AppCompatActivity {
         alarmCounter++;
         setAlarmCounter(view, alarmCounter);
 
-        String alarmID = "alarm" + alarmCounter;
+        alarmID = "alarm" + alarmCounter;
 
         SharedPreferences sharedAlarm = getSharedPreferences(alarmID, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedAlarm.edit();
 
-        editor.putInt("alarmID", alarmCounter);
+        editor.putString("alarmID", alarmID);
         editor.putString("alarmName", alarmName);
         editor.putInt("hour", hour);
         editor.putInt("minute", minute);
@@ -104,12 +107,10 @@ public class SetupActivity extends AppCompatActivity {
             ampm = "AM";
 
         Toast.makeText(getApplicationContext(),"Alarm will sound at " + hour%12 + ":" + minute + ampm, Toast.LENGTH_SHORT).show();
+        return alarmID;
     }
 
-    /**
-     * @param view
-     * @return the number of alarms
-     */
+
     public int getAlarmCounter(View view){
         SharedPreferences sharedCounter = getSharedPreferences("alarmCounter", Context.MODE_PRIVATE);
         return sharedCounter.getInt("counter", -1);
@@ -121,7 +122,7 @@ public class SetupActivity extends AppCompatActivity {
         editor.putInt("counter", numOfAlarms);
         editor.apply();
     }
-
+/*
     private void setupActionBar() {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -130,6 +131,6 @@ public class SetupActivity extends AppCompatActivity {
         }
         actionBar.setTitle("Setup");
     }
-
+*/
 
 }
