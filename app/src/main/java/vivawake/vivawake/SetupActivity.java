@@ -81,9 +81,7 @@ public class SetupActivity extends AppCompatActivity {
     //returns alarmID
     public String saveAlarm(View view, int hour, int minute, String alarmName, String ringtoneFileName){
         int alarmCounter = getAlarmCounter(view);
-        if(alarmCounter == -1) {    //then its the first alarm
-            alarmCounter = 0;
-        }
+
 
         alarmCounter++;
         setAlarmCounter(view, alarmCounter);
@@ -113,7 +111,7 @@ public class SetupActivity extends AppCompatActivity {
 
     public int getAlarmCounter(View view){
         SharedPreferences sharedCounter = getSharedPreferences("alarmCounter", Context.MODE_PRIVATE);
-        return sharedCounter.getInt("counter", -1);
+        return sharedCounter.getInt("counter", 0);
     }
 
     public void setAlarmCounter(View view, int numOfAlarms){
@@ -122,15 +120,6 @@ public class SetupActivity extends AppCompatActivity {
         editor.putInt("counter", numOfAlarms);
         editor.apply();
     }
-/*
-    private void setupActionBar() {
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            // Show the Up button in the action bar.
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-        actionBar.setTitle("Setup");
-    }
-*/
+
 
 }

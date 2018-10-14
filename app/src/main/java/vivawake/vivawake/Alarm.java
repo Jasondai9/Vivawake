@@ -7,6 +7,12 @@ public class Alarm {
     String alarmName, ringtone;
     int hour, minute, alarmID;
 
+    Alarm(String alarmName, int hour, int minute){
+        this.alarmName = alarmName;
+        this.hour = hour;
+        this.minute = minute;
+    }
+
     Alarm(String alarmName, String ringtone, int hour, int minute, int alarmID){
         this.alarmName = alarmName;
         this.ringtone = ringtone;
