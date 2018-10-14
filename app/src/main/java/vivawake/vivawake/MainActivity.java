@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -40,6 +41,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button butt = (Button) findViewById(R.id.testButton);
+        butt.setOnClickListener(new Button.OnClickListener(){
+            public void onClick(View v){
+                alarmArrayList.get(0).turnMeOff(getApplicationContext());
+            }
+        });
 
 
     }
