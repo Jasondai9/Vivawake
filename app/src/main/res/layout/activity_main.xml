@@ -35,10 +35,10 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_alarm"
         android:layout_width="match_parent"
-        android:layout_height="512dp"
         android:layout_marginTop="?attr/actionBarSize"
-        app:layout_anchor="@+id/fab"
-        app:layout_anchorGravity="top">
+        android:layout_height="match_parent"
+        app:layout_anchor="@+id/fab">
+
 
     </android.support.v7.widget.RecyclerView>
 
