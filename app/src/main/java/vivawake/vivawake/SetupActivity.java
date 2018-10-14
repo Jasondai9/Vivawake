@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import android.widget.ScrollView;
 
 import java.util.Calendar;
 
@@ -32,6 +34,7 @@ public class SetupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup);
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         final Calendar calendar = Calendar.getInstance();
 
@@ -41,6 +44,13 @@ public class SetupActivity extends AppCompatActivity {
         ringtoneAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ringtoneSpinner.setAdapter(ringtoneAdapter);
 
+        Button activitiesButton = (Button) findViewById(R.id.ActivitesButton);
+        activitiesButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SetupActivity.this, ActivityActivity.class));
+            }
+         });
 
         //button that saves the alarm
         Button saveAlarmButton = (Button) findViewById(R.id.saveAlarmButton);
@@ -68,18 +78,6 @@ public class SetupActivity extends AppCompatActivity {
                 MainActivity.alarmArrayList.add(alarm);
 
                 alarm.turnMeOn(context);
-                /*
-
-
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, alarmReceiverIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-                subtract the activity time from this
-
-                long alarmTime = calendar.getTimeInMillis();
-                alarmManager1.set(AlarmManager.RTC_WAKEUP, alarmTime, pendingIntent);
-
-                */
-
 
 
                 finish();

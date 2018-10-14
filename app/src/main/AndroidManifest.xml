@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="vivawake.vivawake">
-    <uses-permission android:name="android.permission.VIBRATE"/>
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,21 +24,30 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:noHistory="true"/>
+            android:noHistory="true" />
         <activity
             android:name=".ActivityActivity"
             android:label="@string/title_activity_activity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ActivitycreationActivity"></activity>
+        <activity
+            android:name=".ActivitycreationActivity"
+            android:noHistory="true"/>
         <activity
             android:name=".SetupActivity"
             android:label="@string/title_activity_settings" />
-        
-        <receiver android:name=".AlarmReceiver" />
-        <service android:name=".RingtonePlayerService"
-            android:enabled="true">
-        </service>
 
+        <receiver android:name=".AlarmReceiver" />
+
+        <service
+            android:name=".RingtonePlayerService"
+            android:enabled="true"></service>
+
+        <activity
+            android:name=".AlarmNotificationActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_alarm_notification"
+            android:theme="@style/FullscreenTheme"
+            android:noHistory="true" ></activity>
     </application>
 
 </manifest>

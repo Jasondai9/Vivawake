@@ -75,10 +75,14 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_activity">ActivityActivity</string>
-    
+
     <string-array name="ringtoneArray">
         <item>ringtone1</item>
         <item>ringtone2</item>
         <item>ringtone3</item>
     </string-array>
+
+    <string name="title_activity_alarm_notification">AlarmNotificationActivity</string>
+    <string name="notification_off_button">Turn off alarm</string>
+    <string name="notification_activity_text">It\'s time\nto wake up!</string>
 </resources>

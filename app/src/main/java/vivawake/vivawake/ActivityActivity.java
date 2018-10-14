@@ -37,6 +37,8 @@ public class ActivityActivity extends AppCompatActivity {
                 openActivityCreation();
             }
         });
+
+
     }
 
     private void initActivities(){
