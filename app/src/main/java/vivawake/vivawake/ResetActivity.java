@@ -36,6 +36,7 @@ public class ResetActivity  extends AppCompatActivity{
                 String activityName = name.getText().toString();
                 activity activity = new activity(activityName, hour, minute);
                 saveActivity(v, activity);
+                finish();
             }
         });
 
