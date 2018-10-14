@@ -13,7 +13,7 @@
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/hour_text"
         android:layout_marginLeft="5dp"
-        android:textSize="30dp"/>
+        android:textSize="30sp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,16 +21,17 @@
         android:id="@+id/activity_name"
         android:textColor="#000"
         android:layout_centerVertical="true"
-        android:textSize="30dp"/>
+        android:layout_marginLeft="10dp"
+        android:textSize="30sp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="5"
+        android:text="05"
         android:id="@+id/hour_text"
         android:textColor="#000"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="275dp"
-        android:textSize="30dp"
+        android:layout_marginLeft="265dp"
+        android:textSize="30sp"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -41,7 +42,8 @@
         android:layout_centerVertical="true"
         android:layout_toRightOf="@id/colon"
         android:layout_marginLeft="5dp"
-        android:textSize="30dp"
+        android:layout_marginRight="10dp"
+        android:textSize="30sp"
         />
     <View
         android:layout_width="fill_parent"

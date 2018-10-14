@@ -56,8 +56,15 @@ public class ActivityActivity extends AppCompatActivity {
         for(int i = 1; i <= activityCounter; i++){
             SharedPreferences pref = getSharedPreferences("Activity"+i, Context.MODE_PRIVATE);
             activityNames.add(pref.getString("Name", ""));
-            hourTimes.add(Integer.toString(pref.getInt("Hour", 0)));
-            minuteTimes.add(Integer.toString(pref.getInt("Minute", 0)));
+            int hour = pref.getInt("Hour", 0);
+            int minute = pref.getInt("Minute", 0);
+            if(hour/10 == 0)
+                hourTimes.add(""+0+Integer.toString(hour));
+            else
+                hourTimes.add(Integer.toString(hour));
+            if(minute/10 == 0)
+                minuteTimes.add(""+0+Integer.toString(minute));
+            minuteTimes.add(Integer.toString(minute));
         }
         initRecyclerView();
     }
