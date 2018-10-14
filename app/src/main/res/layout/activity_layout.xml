@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/activity_layout">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Canada"
+        android:id="@+id/activity_name"
+        android:textColor="#000"
+        android:layout_centerVertical="true"
+        android:textSize="30dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5 Hours"
+        android:id="@+id/hour_text"
+        android:textColor="#000"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/activity_name"
+        android:layout_marginLeft="40dp"
+        android:textSize="25dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="30 Minutes"
+        android:id="@+id/minutes_text"
+        android:textColor="#000"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/hour_text"
+        android:layout_marginLeft="40dp"
+        android:textSize="20dp"
+        />
+</RelativeLayout>
