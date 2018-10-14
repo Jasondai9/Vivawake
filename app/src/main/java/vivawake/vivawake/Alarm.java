@@ -16,6 +16,7 @@ public class Alarm {
     int hour, minute;
     AlarmManager alarmManager;
     final Calendar calendar = Calendar.getInstance();
+    PendingIntent pendingIntent;
 
     final static public long MS_IN_MIN = 60000;
     final static public long MS_IN_HOUR = 3600000;
@@ -31,7 +32,7 @@ public class Alarm {
 
     public void turnMeOn(Context context){
         Intent intent = new Intent(context, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
 
 
@@ -42,6 +43,10 @@ public class Alarm {
         long alarmTime = calculateAlarmTime(calendar.getTimeInMillis(), context);
         alarmTime -= alarmTime%MS_IN_MIN;
         alarmManager.set(AlarmManager.RTC_WAKEUP, alarmTime, pendingIntent);
+    }
+    
+    public void cancel(Context context){
+        pendingIntent.cancel();
     }
 
     public void turnMeOff(Context context){
