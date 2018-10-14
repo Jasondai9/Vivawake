@@ -83,13 +83,11 @@ public class ActivitycreationActivity extends AppCompatActivity {
         editor.putString("Name", act.getName());
         editor.apply();
 
-        Toast.makeText(this, "Saved!" + sharedCounter.getInt("counter", 0), Toast.LENGTH_LONG).show();
         return ActivityID;
     }
 
     public void displayActivity(View view){
         SharedPreferences sharedAct = getSharedPreferences("tester", Context.MODE_PRIVATE);
-        Toast.makeText(this, sharedAct.getString("Name", ""), Toast.LENGTH_LONG).show();
     }
 
     public void setActivityCounter(View view, int numOfActivities){

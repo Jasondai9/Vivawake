@@ -18,9 +18,9 @@ public class ActivityActivity extends AppCompatActivity {
     private static final String TAG = "ActivityActivity";
 
     //vars
-    private static ArrayList<String> activityNames;
-    private static ArrayList<String> hourTimes;
-    private static ArrayList<String> minuteTimes;
+    public static ArrayList<String> activityNames;
+    public static ArrayList<String> hourTimes;
+    public static ArrayList<String> minuteTimes;
 
 
     @Override

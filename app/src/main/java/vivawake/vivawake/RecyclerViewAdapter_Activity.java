@@ -18,10 +18,10 @@ import java.util.ArrayList;
 public class RecyclerViewAdapter_Activity extends RecyclerView.Adapter<RecyclerViewAdapter_Activity.ViewHolder>{
     private static final String TAG = "RecyclerViewAdapter_Act";
 
-    private ArrayList<String> mActivityNames = new ArrayList<>();
-    private ArrayList<String> mHourTimes = new ArrayList<>();
-    private ArrayList<String> mMinuteTimes = new ArrayList<>();
-    private Context mContext;
+    public ArrayList<String> mActivityNames = new ArrayList<>();
+    public ArrayList<String> mHourTimes = new ArrayList<>();
+    public ArrayList<String> mMinuteTimes = new ArrayList<>();
+    public Context mContext;
 
     public RecyclerViewAdapter_Activity(Context context, ArrayList<String> activityNames, ArrayList<String> hourTimes, ArrayList<String> minuteTimes){
         mActivityNames = activityNames;
@@ -48,7 +48,6 @@ public class RecyclerViewAdapter_Activity extends RecyclerView.Adapter<RecyclerV
             @Override
             public void onClick(View view){
                 Log.d(TAG, "OnClick: clicked on: " + mActivityNames.get(i));
-                Toast.makeText(mContext, Integer.toString(i), Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(mContext, ResetActivity.class);
                 intent.putExtra("activity_name", mActivityNames.get(i));
                 intent.putExtra("hour_time", mHourTimes.get(i));

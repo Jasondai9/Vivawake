@@ -44,11 +44,11 @@ public class SetupActivity extends AppCompatActivity {
         ringtoneAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ringtoneSpinner.setAdapter(ringtoneAdapter);
 
-        Button activitiesButton = (Button) findViewById(R.id.ActivitesButton);
+        Button activitiesButton = (Button) findViewById(R.id.ActivitiesButton);
         activitiesButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SetupActivity.this, ActivityActivity.class));
+                startActivity(new Intent(SetupActivity.this, ChecklistActivity.class));
             }
          });
 
