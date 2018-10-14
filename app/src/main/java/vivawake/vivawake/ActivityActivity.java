@@ -64,7 +64,8 @@ public class ActivityActivity extends AppCompatActivity {
                 hourTimes.add(Integer.toString(hour));
             if(minute/10 == 0)
                 minuteTimes.add(""+0+Integer.toString(minute));
-            minuteTimes.add(Integer.toString(minute));
+            else
+                minuteTimes.add(Integer.toString(minute));
         }
         initRecyclerView();
     }
