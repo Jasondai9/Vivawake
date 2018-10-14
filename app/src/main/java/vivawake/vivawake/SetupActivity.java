@@ -47,28 +47,35 @@ public class SetupActivity extends AppCompatActivity {
         saveAlarmButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent alarmReceiverIntent = new Intent(SetupActivity.this, AlarmReceiver.class);
+                //Intent alarmReceiverIntent = new Intent(SetupActivity.this, AlarmReceiver.class);
 
-                AlarmManager alarmManager1 = (AlarmManager) getSystemService(ALARM_SERVICE);
+                //AlarmManager alarmManager1 = (AlarmManager) getSystemService(ALARM_SERVICE);
 
                 int hour = timePicker1.getHour();
                 int minute = timePicker1.getMinute();
                 EditText alarmNameEditText = (EditText) findViewById(R.id.alarmNameEditText);
                 alarmName = alarmNameEditText.getText().toString();
                 ringtone = ringtoneSpinner.getSelectedItem().toString();
+                alarmID = saveAlarm(v, hour, minute, alarmName, ringtone);
 
                 calendar.set(Calendar.HOUR_OF_DAY, hour);
                 calendar.set(Calendar.MINUTE, minute);
 
+                Alarm alarm = new Alarm(alarmName, ringtone, hour, minute, alarmID);
+
+                alarm.turnMeOn(v, context);
+                /*
+
+
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, alarmReceiverIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-
-                /*
                 subtract the activity time from this
-                 */
+
                 long alarmTime = calendar.getTimeInMillis();
-                alarmID = saveAlarm(v, hour, minute, alarmName, ringtone);
                 alarmManager1.set(AlarmManager.RTC_WAKEUP, alarmTime, pendingIntent);
+
+                */
+
 
 
                 finish();
