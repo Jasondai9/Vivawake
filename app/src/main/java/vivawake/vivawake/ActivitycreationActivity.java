@@ -20,6 +20,7 @@ public class ActivitycreationActivity extends AppCompatActivity {
     EditText minutes;
     EditText name;
     LinearLayout mLayout;
+    String ActivityID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,15 +56,19 @@ public class ActivitycreationActivity extends AppCompatActivity {
         }); */
     }
 
-    /*public void activityCounter(View view){
-        SharedPreferences activityCount = getSharedPreferences("ActivityCounter", Context.MODE_PRIVATE);
+    public int getCounter(View view){
+        SharedPreferences sharedCounter = getSharedPreferences("activityCounter", Context.MODE_PRIVATE);
+        return sharedCounter.getInt("counter", 0);
 
-        SharedPreferences.Editor editor = activityCount.edit();
+
+    }
 
 
-    }*/
-
-    public void saveActivity(View view, activity act){
+    public String saveActivity(View view, activity act){
+        int activityCounter = getCounter(view);
+        activityCounter++;
+        setActivityCounter(view, activityCounter);
+        ActivityID = "Activity" + activityCounter;
         SharedPreferences sharedAct = getSharedPreferences("tester", Context.MODE_PRIVATE);
 
         SharedPreferences.Editor editor = sharedAct.edit();
@@ -73,12 +78,20 @@ public class ActivitycreationActivity extends AppCompatActivity {
         editor.apply();
 
 
-        Toast.makeText(this, "Saved!" + sharedAct.getString("Name", ""), Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Saved!" + getCounter(view), Toast.LENGTH_LONG).show();
+        return ActivityID;
     }
 
     public void displayActivity(View view){
         SharedPreferences sharedAct = getSharedPreferences("tester", Context.MODE_PRIVATE);
         Toast.makeText(this, sharedAct.getString("Name", ""), Toast.LENGTH_LONG).show();
+    }
+
+    public void setActivityCounter(View view, int numOfActivities){
+        SharedPreferences sharedCounter = getSharedPreferences("activityCounter", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedCounter.edit();
+        editor.putInt("counter", numOfActivities);
+        editor.apply();
     }
 
 
