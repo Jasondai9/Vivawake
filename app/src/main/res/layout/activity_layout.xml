@@ -19,7 +19,7 @@
         android:id="@+id/hour_text"
         android:textColor="#000"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="300dp"
+        android:layout_marginLeft="275dp"
         android:textSize="30dp"
         />
     <TextView
