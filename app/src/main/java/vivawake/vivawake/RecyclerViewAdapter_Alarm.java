@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ public class RecyclerViewAdapter_Alarm extends RecyclerView.Adapter<RecyclerView
     private ArrayList<String> mAlarmHours = new ArrayList<>();
     private ArrayList<String> mAlarmMinutes = new ArrayList<>();
     private Context mContext;
+
 
     public RecyclerViewAdapter_Alarm(Context context, ArrayList<String> alarmName, ArrayList<String> alarmHour, ArrayList<String> alarmMinute){
         mAlarmNames = alarmName;
@@ -51,10 +53,22 @@ public class RecyclerViewAdapter_Alarm extends RecyclerView.Adapter<RecyclerView
         viewHolder.alarmLayout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Toast.makeText(mContext, i, Toast.LENGTH_LONG).show();
+                //add function when pressed
+            }
+        });
+        viewHolder.switch1.setChecked(true);
+        MainActivity.alarmArrayList.get(i).turnMeOn(mContext);
+        viewHolder.switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)//turning it on
+                    MainActivity.alarmArrayList.get(i).turnMeOn(mContext);
+                else//turn off
+                    MainActivity.alarmArrayList.get(i).cancel(mContext);
             }
         });
     }
+
+
 
     @Override
     public int getItemCount() {

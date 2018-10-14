@@ -18,6 +18,9 @@ public class AlarmReceiver extends BroadcastReceiver {
         vibe.vibrate(2000);
         Intent notificationIntent = new Intent(context, AlarmNotificationActivity.class);
         context.startActivity(notificationIntent);
+
     }
+
+
 }
 
