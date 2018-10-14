@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/alarmLayout">
+
+    <TextView
+        android:id="@+id/alarmHour2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:text="24"
+        android:textSize="36sp"
+        />
+
+    <TextView
+        android:id="@+id/alarmColon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/alarmHour2"
+        android:layout_marginLeft="5dp"
+        android:textSize="36sp"
+        android:text=":" />
+
+    <TextView
+        android:id="@+id/alarmMinute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/alarmColon"
+        android:layout_marginLeft="5dp"
+        android:textSize="36sp"
+        android:text="34" />
+
+    <TextView
+        android:id="@+id/AMPM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/alarmHour"
+        android:layout_toRightOf="@+id/alarmMinute"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="9dp"
+        android:text="am" />
+
+    <TextView
+        android:id="@+id/alarmName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/alarmHour"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentStart="true"
+        android:text="TextView" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:layout_below="@id/alarmName"
+        android:background="#000" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        />
+</RelativeLayout>

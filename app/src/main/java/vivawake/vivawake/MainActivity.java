@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
     static ArrayList<Alarm> alarmArrayList;
     Context context;
+    private ArrayList<String> alarmNames = new ArrayList<>();
+    private ArrayList<String> alarmHours = new ArrayList<>();
+    private ArrayList<String> alarmMinutes = new ArrayList<>();
 
     public static void restartActivity(Activity act){
         act.recreate();
@@ -36,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         createAlarmArrayList();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -46,17 +52,36 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button butt = (Button) findViewById(R.id.testButton);
+        /*Button butt = (Button) findViewById(R.id.testButton);
         butt.setOnClickListener(new Button.OnClickListener(){
             public void onClick(View v){
                 alarmArrayList.get(0).turnMeOff(getApplicationContext());
             }
-        });
+        });*/
 
-
+        initAlarms();
         this.context = context;
     }
+    private void initAlarms(){
+        SharedPreferences sharedCounter = getSharedPreferences("alarmCounter", Context.MODE_PRIVATE);
+        int alarmCounter = sharedCounter.getInt("counter", 0);
+        String alarmName;
+        //SharedPreferences pref;
+        for(int i = 1; i <= alarmCounter; i++){
+            SharedPreferences pref = getSharedPreferences("alarm"+i, Context.MODE_PRIVATE);
+            alarmNames.add(pref.getString("alarmName", ""));
+            alarmHours.add(Integer.toString(pref.getInt("hour", 0)));
+            alarmMinutes.add(Integer.toString(pref.getInt("minute", 0)));
+        }
+        initRecyclerView();
+    }
+    private void initRecyclerView(){
+        RecyclerView recyclerView = findViewById(R.id.recycler_view_alarm);
+        RecyclerViewAdapter_Alarm adapter = new RecyclerViewAdapter_Alarm(this, alarmNames, alarmHours, alarmMinutes);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+    }
     public void createAlarmArrayList(){
         SharedPreferences alarmCounter = getSharedPreferences("alarmCounter", Context.MODE_PRIVATE);
         int numAlarms = alarmCounter.getInt("counter", 0);

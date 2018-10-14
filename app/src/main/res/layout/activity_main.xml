@@ -29,10 +29,12 @@
         app:backgroundTint="@android:color/white"
         app:srcCompat="@android:drawable/ic_input_add" />
 
-    <Button
-        android:id="@+id/testButton"
+
+
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="press to turn alarm on or off" />
+        android:id="@+id/recycler_view_alarm">
+    </android.support.v7.widget.RecyclerView>
 
 </android.support.design.widget.CoordinatorLayout>
