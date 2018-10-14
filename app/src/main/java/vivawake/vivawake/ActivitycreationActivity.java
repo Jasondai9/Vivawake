@@ -37,6 +37,7 @@ public class ActivitycreationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 int hour = Integer.parseInt(hours.getText().toString());
+                Toast.makeText(ActivitycreationActivity.this, Integer.toString(hour), Toast.LENGTH_LONG).show();
                 int minute = Integer.parseInt(minutes.getText().toString());
                 String activityName = name.getText().toString();
                 activity activity = new activity(activityName, hour, minute);
