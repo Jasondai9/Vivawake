@@ -41,7 +41,7 @@ public class RecyclerViewAdapter_Alarm extends RecyclerView.Adapter<RecyclerView
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.alarmHour.setText(mAlarmHours.get(i));
         viewHolder.minute.setText(mAlarmMinutes.get(i));
-        viewHolder.colon.setText(";");
+        viewHolder.colon.setText(":");
         if(Integer.parseInt(mAlarmHours.get(i))/12 == 1) {
             viewHolder.AMPM.setText("PM");
         }else{
@@ -74,6 +74,8 @@ public class RecyclerViewAdapter_Alarm extends RecyclerView.Adapter<RecyclerView
             colon = itemView.findViewById(R.id.alarmColon);
             AMPM = itemView.findViewById(R.id.AMPM);
             alarmName = itemView.findViewById(R.id.alarmName);
+            alarmLayout = itemView.findViewById(R.id.alarmLayout);
+            switch1 = itemView.findViewById(R.id.switch1);
         }
     }
 }
