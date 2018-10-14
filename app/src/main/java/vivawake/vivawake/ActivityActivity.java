@@ -18,9 +18,9 @@ public class ActivityActivity extends AppCompatActivity {
     private static final String TAG = "ActivityActivity";
 
     //vars
-    private ArrayList<String> activityNames;
-    private ArrayList<String> hourTimes;
-    private ArrayList<String> minuteTimes;
+    private static ArrayList<String> activityNames;
+    private static ArrayList<String> hourTimes;
+    private static ArrayList<String> minuteTimes;
 
 
     @Override
@@ -56,7 +56,7 @@ public class ActivityActivity extends AppCompatActivity {
         for(int i = 1; i <= activityCounter; i++){
             SharedPreferences pref = getSharedPreferences("Activity"+i, Context.MODE_PRIVATE);
             activityNames.add(pref.getString("Name", ""));
-            hourTimes.add(Integer.toString(pref.getInt("Hour", 0)) + " : " );
+            hourTimes.add(Integer.toString(pref.getInt("Hour", 0)));
             minuteTimes.add(Integer.toString(pref.getInt("Minute", 0)));
         }
         initRecyclerView();
@@ -68,7 +68,7 @@ public class ActivityActivity extends AppCompatActivity {
        startActivity(new Intent(this, ActivitycreationActivity.class));
     }
 
-    private void initRecyclerView(){
+    public void initRecyclerView(){
         Log.d(TAG, "initRecyclerView: int recyclerview");
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         RecyclerViewAdapter_Activity adapter = new RecyclerViewAdapter_Activity(this, activityNames, hourTimes, minuteTimes);

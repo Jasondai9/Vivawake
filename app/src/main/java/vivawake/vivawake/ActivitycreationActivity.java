@@ -1,6 +1,7 @@
 package vivawake.vivawake;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,8 @@ import java.util.ArrayList;
 
 
 public class ActivitycreationActivity extends AppCompatActivity {
+    Context context;
+
 
     public static ArrayList<String> alarmNames = new ArrayList<>();
     EditText hours;
@@ -34,6 +37,7 @@ public class ActivitycreationActivity extends AppCompatActivity {
         alarmNames.add(name.getText().toString());
         //Button test = (Button) findViewById(R.id.button3);
 
+
         save.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -53,7 +57,9 @@ public class ActivitycreationActivity extends AppCompatActivity {
                 activity activity = new activity(activityName, hour, minute);
                 saveActivity(view, activity);
 
-                finish();
+
+                Intent backIntent = new Intent(ActivitycreationActivity.this, ActivityActivity.class);
+                startActivity(backIntent);
             }
         });
 

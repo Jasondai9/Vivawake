@@ -1,5 +1,6 @@
 package vivawake.vivawake;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -36,7 +37,8 @@ public class ResetActivity  extends AppCompatActivity{
                 String activityName = name.getText().toString();
                 activity activity = new activity(activityName, hour, minute);
                 saveActivity(v, activity);
-                finish();
+                Intent backIntent = new Intent(ResetActivity.this, ActivityActivity.class);
+                startActivity(backIntent);
             }
         });
 

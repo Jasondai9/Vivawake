@@ -1,5 +1,6 @@
 package vivawake.vivawake;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
 
     static ArrayList<Alarm> alarmArrayList;
     Context context;
+
+    public static void restartActivity(Activity act){
+        act.recreate();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

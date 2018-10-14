@@ -43,16 +43,17 @@ public class RecyclerViewAdapter_Activity extends RecyclerView.Adapter<RecyclerV
         holder.activityName.setText(mActivityNames.get(i));
         holder.hour.setText(mHourTimes.get(i));
         holder.minutes.setText(mMinuteTimes.get(i));
+        holder.colon.setText(":");
         holder.activity_layout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Log.d(TAG, "OnClick: clicked on: " + mActivityNames.get(i));
-                Toast.makeText(mContext, mActivityNames.get(i), Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, Integer.toString(i), Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(mContext, ResetActivity.class);
                 intent.putExtra("activity_name", mActivityNames.get(i));
                 intent.putExtra("hour_time", mHourTimes.get(i));
                 intent.putExtra("minute_time", mMinuteTimes.get(i));
-                intent.putExtra("counter", i);
+                intent.putExtra("counter", Integer.toString(i+1));
                 mContext.startActivity(intent);
             }
         });
@@ -66,7 +67,7 @@ public class RecyclerViewAdapter_Activity extends RecyclerView.Adapter<RecyclerV
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView activityName, hour, minutes;
+        TextView activityName, hour, minutes, colon;
         RelativeLayout activity_layout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -75,7 +76,7 @@ public class RecyclerViewAdapter_Activity extends RecyclerView.Adapter<RecyclerV
             hour = itemView.findViewById(R.id.hour_text);
             minutes = itemView.findViewById(R.id.minutes_text);
             activity_layout = itemView.findViewById(R.id.activity_layout);
-
+            colon = itemView.findViewById(R.id.colon);
         }
     }
 }

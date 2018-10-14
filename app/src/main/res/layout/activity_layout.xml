@@ -7,6 +7,16 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text=":"
+        android:id="@+id/colon"
+        android:textColor="#000"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/hour_text"
+        android:layout_marginLeft="5dp"
+        android:textSize="30dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Canada"
         android:id="@+id/activity_name"
         android:textColor="#000"
@@ -15,7 +25,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="5 :"
+        android:text="5"
         android:id="@+id/hour_text"
         android:textColor="#000"
         android:layout_centerVertical="true"
@@ -29,7 +39,7 @@
         android:id="@+id/minutes_text"
         android:textColor="#000"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@id/hour_text"
+        android:layout_toRightOf="@id/colon"
         android:layout_marginLeft="5dp"
         android:textSize="30dp"
         />

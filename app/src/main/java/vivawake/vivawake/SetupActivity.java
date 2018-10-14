@@ -79,8 +79,8 @@ public class SetupActivity extends AppCompatActivity {
 
                 alarm.turnMeOn(context);
 
-
-                finish();
+                Intent backIntent = new Intent(SetupActivity.this, ActivityActivity.class);
+                startActivity(backIntent);
             }
         });
         this.context = this;

@@ -33,6 +33,6 @@
         android:id="@+id/testButton"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="press to turn alrm on or off" />
+        android:text="press to turn alarm on or off" />
 
 </android.support.design.widget.CoordinatorLayout>
