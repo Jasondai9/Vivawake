@@ -9,9 +9,9 @@ public class activity {
 
     }
 
-    activity(String name, int hour, int minute){
+    activity(String names, int hour, int minute){
         this.hours = hour;
-        this.name = name;
+        this.name = names;
         this.minutes = minute;
     }
 
