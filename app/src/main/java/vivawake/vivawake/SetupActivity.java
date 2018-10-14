@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import android.widget.ScrollView;
 
 import java.util.Calendar;
 
@@ -41,6 +42,13 @@ public class SetupActivity extends AppCompatActivity {
         ringtoneAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ringtoneSpinner.setAdapter(ringtoneAdapter);
 
+        Button activitiesButton = (Button) findViewById(R.id.ActivitesButton);
+        activitiesButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SetupActivity.this, ActivityActivity.class));
+            }
+         });
 
         //button that saves the alarm
         Button saveAlarmButton = (Button) findViewById(R.id.saveAlarmButton);
