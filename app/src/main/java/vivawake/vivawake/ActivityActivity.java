@@ -18,15 +18,20 @@ public class ActivityActivity extends AppCompatActivity {
     private static final String TAG = "ActivityActivity";
 
     //vars
-    private ArrayList<String> activityNames = new ArrayList<>();
-    private ArrayList<String> hourTimes = new ArrayList<>();
-    private ArrayList<String> minuteTimes = new ArrayList<>();
+    private ArrayList<String> activityNames;
+    private ArrayList<String> hourTimes;
+    private ArrayList<String> minuteTimes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        activityNames = new ArrayList<String>();
+        hourTimes = new ArrayList<String>();
+        minuteTimes = new ArrayList<String>();
+
         initActivities();
 
 
@@ -45,9 +50,9 @@ public class ActivityActivity extends AppCompatActivity {
         SharedPreferences sharedCounter = getSharedPreferences("activityCounter", Context.MODE_PRIVATE);
         int activityCounter = sharedCounter.getInt("counter", 0);
         String activityName;
-        SharedPreferences pref;
+        //SharedPreferences pref;
         for(int i = 1; i <= activityCounter; i++){
-            pref = getSharedPreferences("Activity"+i, Context.MODE_PRIVATE);
+            SharedPreferences pref = getSharedPreferences("Activity"+i, Context.MODE_PRIVATE);
             activityNames.add(pref.getString("Name", ""));
             hourTimes.add(Integer.toString(pref.getInt("Hour", 0)));
             minuteTimes.add(Integer.toString(pref.getInt("Minute", 0)));
@@ -63,6 +68,6 @@ public class ActivityActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         RecyclerViewAdapter_Activity adapter = new RecyclerViewAdapter_Activity(this, activityNames, hourTimes, minuteTimes);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(ActivityActivity.this));
     }
 }

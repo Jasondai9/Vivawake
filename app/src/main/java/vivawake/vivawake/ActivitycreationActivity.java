@@ -19,7 +19,7 @@ public class ActivitycreationActivity extends AppCompatActivity {
     EditText hours;
     EditText minutes;
     EditText name;
-    LinearLayout mLayout;
+    //LinearLayout mLayout;
     String ActivityID;
 
     @Override
@@ -30,7 +30,7 @@ public class ActivitycreationActivity extends AppCompatActivity {
         minutes = (EditText) findViewById(R.id.MinutesTxt);
         name = (EditText) findViewById(R.id.ActivityNameTxt);
         Button save = (Button) findViewById(R.id.saveButton);
-        mLayout = (LinearLayout) findViewById(R.id.linearL);
+        //mLayout = (LinearLayout) findViewById(R.id.linearL);
         alarmNames.add(name.getText().toString());
         //Button test = (Button) findViewById(R.id.button3);
 
@@ -60,7 +60,7 @@ public class ActivitycreationActivity extends AppCompatActivity {
 
         setActivityCounter(view, activityCounter);
         ActivityID = "Activity" + activityCounter;
-        SharedPreferences sharedAct = getSharedPreferences("ActivityID", Context.MODE_PRIVATE);
+        SharedPreferences sharedAct = getSharedPreferences(ActivityID, Context.MODE_PRIVATE);
 
         SharedPreferences.Editor editor = sharedAct.edit();
         editor.putInt("Hour", act.getHour());

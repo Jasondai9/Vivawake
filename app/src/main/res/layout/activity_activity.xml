@@ -17,11 +17,11 @@
         app:backgroundTint="@android:color/white"
         app:srcCompat="@android:drawable/ic_input_add" />
 
-    <android.support.v8.widget.RecyclerView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recycler_view">
+        android:layout_height="match_parent">
 
-    </android.support.v8.widget.RecyclerView>
+    </android.support.v7.widget.RecyclerView>
 
 </android.support.design.widget.CoordinatorLayout>
