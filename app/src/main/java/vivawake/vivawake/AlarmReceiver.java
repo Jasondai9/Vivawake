@@ -11,11 +11,13 @@ import android.widget.Toast;
 public class AlarmReceiver extends BroadcastReceiver {
 
     public void onReceive(Context context, Intent intent) {
+
         Intent ringtoneServiceIntent = new Intent(context, RingtonePlayerService.class);
         context.startService(ringtoneServiceIntent);
         Vibrator vibe = (Vibrator) context.getSystemService(context.VIBRATOR_SERVICE);
         vibe.vibrate(2000);
-
+        Intent notificationIntent = new Intent(context, AlarmNotificationActivity.class);
+        context.startActivity(notificationIntent);
     }
 }
 

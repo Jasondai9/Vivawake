@@ -68,18 +68,6 @@ public class SetupActivity extends AppCompatActivity {
                 MainActivity.alarmArrayList.add(alarm);
 
                 alarm.turnMeOn(context);
-                /*
-
-
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, alarmReceiverIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-                subtract the activity time from this
-
-                long alarmTime = calendar.getTimeInMillis();
-                alarmManager1.set(AlarmManager.RTC_WAKEUP, alarmTime, pendingIntent);
-
-                */
-
 
 
                 finish();
