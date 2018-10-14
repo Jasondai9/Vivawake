@@ -29,7 +29,9 @@
             android:name=".ActivityActivity"
             android:label="@string/title_activity_activity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ActivitycreationActivity" />
+        <activity
+            android:name=".ActivitycreationActivity"
+            android:noHistory="true"/>
         <activity
             android:name=".SetupActivity"
             android:label="@string/title_activity_settings" />

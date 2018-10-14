@@ -43,33 +43,24 @@ public class ActivitycreationActivity extends AppCompatActivity {
                 String activityName = name.getText().toString();
                 activity activity = new activity(activityName, hour, minute);
                 saveActivity(view, activity);
+
+                finish();
             }
         });
-
-        /*test.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                displayActivity(view);
-
-            }
-
-        }); */
-    }
-
-    public int getCounter(View view){
-        SharedPreferences sharedCounter = getSharedPreferences("activityCounter", Context.MODE_PRIVATE);
-        return sharedCounter.getInt("counter", 0);
-
 
     }
 
 
     public String saveActivity(View view, activity act){
-        int activityCounter = getCounter(view);
+        SharedPreferences sharedCounter = getSharedPreferences("activityCounter", Context.MODE_PRIVATE);
+        int activityCounter = sharedCounter.getInt("counter", 0);
         activityCounter++;
+        SharedPreferences.Editor counterEditor = sharedCounter.edit();
+        counterEditor.putInt("counter", activityCounter);
+
         setActivityCounter(view, activityCounter);
         ActivityID = "Activity" + activityCounter;
-        SharedPreferences sharedAct = getSharedPreferences("tester", Context.MODE_PRIVATE);
+        SharedPreferences sharedAct = getSharedPreferences("ActivityID", Context.MODE_PRIVATE);
 
         SharedPreferences.Editor editor = sharedAct.edit();
         editor.putInt("Hour", act.getHour());
@@ -77,8 +68,7 @@ public class ActivitycreationActivity extends AppCompatActivity {
         editor.putString("Name", act.getName());
         editor.apply();
 
-
-        Toast.makeText(this, "Saved!" + getCounter(view), Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Saved!" + sharedCounter.getInt("counter", 0), Toast.LENGTH_LONG).show();
         return ActivityID;
     }
 

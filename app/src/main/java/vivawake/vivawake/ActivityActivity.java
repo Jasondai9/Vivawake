@@ -24,6 +24,8 @@ public class ActivityActivity extends AppCompatActivity {
                 openActivityCreation();
             }
         });
+
+
     }
     public void openActivityCreation(){
        startActivity(new Intent(this, ActivitycreationActivity.class));
