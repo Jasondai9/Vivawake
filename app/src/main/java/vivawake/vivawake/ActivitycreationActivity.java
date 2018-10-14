@@ -31,13 +31,13 @@ public class ActivitycreationActivity extends AppCompatActivity {
         Button save = (Button) findViewById(R.id.saveButton);
         mLayout = (LinearLayout) findViewById(R.id.linearL);
         alarmNames.add(name.getText().toString());
-        Button test = (Button) findViewById(R.id.button3);
+        //Button test = (Button) findViewById(R.id.button3);
 
         save.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 int hour = Integer.parseInt(hours.getText().toString());
-                Toast.makeText(ActivitycreationActivity.this, Integer.toString(hour), Toast.LENGTH_LONG).show();
+                //Toast.makeText(ActivitycreationActivity.this, Integer.toString(hour), Toast.LENGTH_LONG).show();
                 int minute = Integer.parseInt(minutes.getText().toString());
                 String activityName = name.getText().toString();
                 activity activity = new activity(activityName, hour, minute);
@@ -45,14 +45,14 @@ public class ActivitycreationActivity extends AppCompatActivity {
             }
         });
 
-        test.setOnClickListener(new View.OnClickListener() {
+        /*test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
                 displayActivity(view);
 
             }
 
-        });
+        }); */
     }
 
     /*public void activityCounter(View view){
