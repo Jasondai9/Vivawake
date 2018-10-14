@@ -30,9 +30,6 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> alarmHours = new ArrayList<>();
     private ArrayList<String> alarmMinutes = new ArrayList<>();
 
-    public static void restartActivity(Activity act){
-        act.recreate();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +48,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), SetupActivity.class));
             }
         });
-
-        /*Button butt = (Button) findViewById(R.id.testButton);
-        butt.setOnClickListener(new Button.OnClickListener(){
-            public void onClick(View v){
-                alarmArrayList.get(0).turnMeOff(getApplicationContext());
-            }
-        });*/
 
         initAlarms();
         this.context = context;

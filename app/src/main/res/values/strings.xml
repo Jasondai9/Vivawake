@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Vivawake</string>
-    <string name="action_settings">Configure Activities</string>
-    <string name="title_activity_settings">Settings</string>
+    <string name="action_settings">Configure activities</string>
+    <string name="title_activity_settings">Enter arrival time</string>
 
     <!-- Strings related to Settings -->
 

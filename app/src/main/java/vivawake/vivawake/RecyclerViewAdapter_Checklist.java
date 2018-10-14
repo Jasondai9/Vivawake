@@ -1,6 +1,7 @@
 package vivawake.vivawake;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -38,12 +39,32 @@ public class RecyclerViewAdapter_Checklist extends RecyclerView.Adapter<Recycler
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int i) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int i) {
         holder.activityName.setText(mActivityNames.get(i));
         holder.hour.setText(mHourTimes.get(i));
         holder.minutes.setText(mMinuteTimes.get(i));
         holder.colon.setText(":");
 
+        holder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences sharedCounter = mContext.getSharedPreferences("activityCounter", Context.MODE_PRIVATE);
+                int numActivities = sharedCounter.getInt("counter", 0);
+
+                long timeToAlarmInMS = 0;
+
+                for(int i = 1; i <= numActivities; i++){
+                    if(holder.checkbox.isChecked()){
+                        SharedPreferences sharedActivities = mContext.getSharedPreferences("Activity"+i, Context.MODE_PRIVATE);
+                        timeToAlarmInMS += sharedActivities.getInt("Hour", 0)*3600000;
+                        timeToAlarmInMS += sharedActivities.getInt("Minute", 0)*60000;
+                    }
+                }
+
+                ChecklistActivity.preparationTime = timeToAlarmInMS;
+                mContext.startActivity(new Intent(mContext, SetupActivity.class));
+            }
+        });
 
     }
 
@@ -57,6 +78,7 @@ public class RecyclerViewAdapter_Checklist extends RecyclerView.Adapter<Recycler
         TextView activityName, hour, minutes, colon;
         RelativeLayout activity_layout;
         CheckBox checkbox;
+        Button button;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,6 +89,7 @@ public class RecyclerViewAdapter_Checklist extends RecyclerView.Adapter<Recycler
             activity_layout = itemView.findViewById(R.id.checklistLayout);
             colon = itemView.findViewById(R.id.ch_colon);
             checkbox = itemView.findViewById(R.id.checkbox);
+            button = itemView.findViewById(R.id.checklistButton);
         }
     }
 }

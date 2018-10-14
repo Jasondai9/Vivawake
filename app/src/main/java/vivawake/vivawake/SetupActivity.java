@@ -57,10 +57,6 @@ public class SetupActivity extends AppCompatActivity {
         saveAlarmButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //Intent alarmReceiverIntent = new Intent(SetupActivity.this, AlarmReceiver.class);
-
-                //AlarmManager alarmManager1 = (AlarmManager) getSystemService(ALARM_SERVICE);
-
                 //Gets the input time
                 int hour = timePicker1.getHour();
                 int minute = timePicker1.getMinute();

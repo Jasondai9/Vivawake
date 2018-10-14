@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ChecklistActivity">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apply"
+        android:id="@+id/checklistButton"
+        android:layout_margin="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_checklist"
         android:layout_width="match_parent"
