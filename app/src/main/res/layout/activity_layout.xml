@@ -15,23 +15,27 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="5 Hours"
+        android:text="5 :"
         android:id="@+id/hour_text"
         android:textColor="#000"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@id/activity_name"
-        android:layout_marginLeft="40dp"
-        android:textSize="25dp"
+        android:layout_marginLeft="300dp"
+        android:textSize="30dp"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="30 Minutes"
+        android:text="30"
         android:id="@+id/minutes_text"
         android:textColor="#000"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@id/hour_text"
-        android:layout_marginLeft="40dp"
-        android:textSize="20dp"
+        android:layout_marginLeft="5dp"
+        android:textSize="30dp"
         />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:layout_below="@id/activity_name"
+        android:background="#000" />
 </RelativeLayout>

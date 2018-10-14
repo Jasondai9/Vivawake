@@ -38,9 +38,18 @@ public class ActivitycreationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 int hour = Integer.parseInt(hours.getText().toString());
+                if(hour > 23){
+                    hour = 23;
+                }
                 //Toast.makeText(ActivitycreationActivity.this, Integer.toString(hour), Toast.LENGTH_LONG).show();
                 int minute = Integer.parseInt(minutes.getText().toString());
+                if(minute > 59){
+                    minute = 59;
+                }
                 String activityName = name.getText().toString();
+                if(activityName.length()> 15){
+                    activityName = activityName.substring(0, 15);
+                }
                 activity activity = new activity(activityName, hour, minute);
                 saveActivity(view, activity);
 
