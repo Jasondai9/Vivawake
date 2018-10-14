@@ -48,6 +48,7 @@
             android:label="@string/title_activity_alarm_notification"
             android:theme="@style/FullscreenTheme"
             android:noHistory="true" ></activity>
+        <activity android:name=".ResetActivity"></activity>
     </application>
 
 </manifest>

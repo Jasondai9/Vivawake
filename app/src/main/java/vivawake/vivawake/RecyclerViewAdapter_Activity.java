@@ -10,6 +10,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.view.View;
 import android.widget.Toast;
+import android.content.Intent;
+
 
 import java.util.ArrayList;
 
@@ -46,6 +48,12 @@ public class RecyclerViewAdapter_Activity extends RecyclerView.Adapter<RecyclerV
             public void onClick(View view){
                 Log.d(TAG, "OnClick: clicked on: " + mActivityNames.get(i));
                 Toast.makeText(mContext, mActivityNames.get(i), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(mContext, ResetActivity.class);
+                intent.putExtra("activity_name", mActivityNames.get(i));
+                intent.putExtra("hour_time", mHourTimes.get(i));
+                intent.putExtra("minute_time", mMinuteTimes.get(i));
+                intent.putExtra("counter", i);
+                mContext.startActivity(intent);
             }
         });
         
