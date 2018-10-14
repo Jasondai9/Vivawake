@@ -112,10 +112,10 @@ public class AlarmNotificationActivity extends AppCompatActivity {
         alarmOffButton.setOnClickListener(new Button.OnClickListener(){
             public void onClick(View v){
                 MainActivity.alarmArrayList.get(0).turnMeOff(getApplicationContext());
-
+                finish();
             }
         });
-        finish();
+
     }
 
     @Override
