@@ -28,8 +28,7 @@
             android:name=".ActivityActivity"
             android:label="@string/title_activity_activity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ActivitycreationActivity" />
+        <activity android:name=".ActivitycreationActivity" />
         <activity
             android:name=".SetupActivity"
             android:label="@string/title_activity_settings" />
@@ -38,15 +37,16 @@
 
         <service
             android:name=".RingtonePlayerService"
-            android:enabled="true"></service>
+            android:enabled="true" />
 
         <activity
             android:name=".AlarmNotificationActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_alarm_notification"
-            android:theme="@style/FullscreenTheme"
-            android:noHistory="true" ></activity>
-        <activity android:name=".ResetActivity"></activity>
+            android:noHistory="true"
+            android:theme="@style/FullscreenTheme" />
+        <activity android:name=".ResetActivity" />
+        <activity android:name=".ChecklistActivity"></activity>
     </application>
 
 </manifest>
