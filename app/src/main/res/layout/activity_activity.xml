@@ -31,8 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:backgroundTint="@color/design_default_color_primary"
-        app:srcCompat="@android:drawable/ic_menu_add" />
+        app:backgroundTint="@android:color/white"
+        app:srcCompat="@android:drawable/ic_input_add" />
 
     <ScrollView
         android:layout_width="match_parent"
