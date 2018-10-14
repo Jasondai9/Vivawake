@@ -1,20 +1,26 @@
 package vivawake.vivawake;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import static android.widget.Toast.*;
 
 public class MainActivity extends AppCompatActivity {
 
+    ArrayList<Alarm> alarmArrayList;
 
 
     @Override
@@ -24,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        createAlarmArrayList();
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +40,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    public void createAlarmArrayList(){
+        SharedPreferences alarmCounter = getSharedPreferences("alarmCounter", Context.MODE_PRIVATE);
+        int numAlarms = alarmCounter.getInt("counter", 0);
+
+        alarmArrayList = new ArrayList<Alarm>(numAlarms+1);
+        
+        Toast.makeText(getApplicationContext(), "arraylist completed", Toast.LENGTH_SHORT).show();
+        if(numAlarms == 0)
+            return;
+
+        SharedPreferences sharedAlarms;
+
+        for(int i = 1; i <= numAlarms; i++) {
+            String alarmID = "alarm" + i;
+            sharedAlarms = getSharedPreferences(alarmID, Context.MODE_PRIVATE);
+            alarmArrayList.add(new Alarm(sharedAlarms.getString("alarmName", ""),
+                    sharedAlarms.getInt("hour", 0), sharedAlarms.getInt("minute", 0)));
+        }
 
     }
 

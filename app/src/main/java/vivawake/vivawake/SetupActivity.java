@@ -104,7 +104,13 @@ public class SetupActivity extends AppCompatActivity {
         else
             ampm = "AM";
 
-        Toast.makeText(getApplicationContext(),"Alarm will sound at " + hour%12 + ":" + minute + ampm, Toast.LENGTH_SHORT).show();
+        String min;
+        if(minute/10 == 0)
+            min = "0"+minute;
+        else
+            min = ""+minute;
+
+        Toast.makeText(getApplicationContext(),"Alarm will sound at " + hour%12 + ":" + min + ampm, Toast.LENGTH_SHORT).show();
         return alarmID;
     }
 
